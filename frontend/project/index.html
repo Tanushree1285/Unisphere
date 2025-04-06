@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniSphere - University Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/lucide-icons/dist/umd/lucide-icons.min.js">
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Forms -->
+        <div id="authForms" class="auth-container">
+            <div class="auth-box">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                    <h1>UniSphere</h1>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <h2>Welcome Back</h2>
+                    <div class="form-group">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p class="form-switch">
+                        Don't have an account? 
+                        <a href="#" onclick="toggleForms('register')">Register</a>
+                    </p>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <h2>Create Account</h2>
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <input type="text" id="regUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" required>
+                            <option value="student">Student</option>
+                            <option value="professor">Professor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Register</button>
+                    <p class="form-switch">
+                        Already have an account? 
+                        <a href="#" onclick="toggleForms('login')">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard (Hidden by default) -->
+        <div id="dashboard" class="dashboard hidden">
+            <nav class="sidebar">
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                    <span>UniSphere</span>
+                </div>
+                <ul class="nav-links">
+                    <li data-page="profile" class="active">Profile</li>
+                    <li data-page="exams">Exam Marks</li>
+                    <li data-page="todos">To-Do List</li>
+                    <li data-page="fees">Fee Details</li>
+                    <li id="logoutBtn">Logout</li>
+                </ul>
+            </nav>
+            <main class="main-content">
+                <div id="profile" class="page active">
+                    <h2>Profile</h2>
+                    <div class="profile-info">
+                        <p>Username: <span id="profileUsername"></span></p>
+                        <p>Role: <span id="profileRole"></span></p>
+                    </div>
+                </div>
+                <div id="exams" class="page">
+                    <h2>Exam Marks</h2>
+                    <div class="marks-list"></div>
+                </div>
+                <div id="todos" class="page">
+                    <h2>To-Do List</h2>
+                    <div class="todo-form">
+                        <input type="text" id="newTask" placeholder="New task...">
+                        <button onclick="addTodo()" class="btn-primary">Add</button>
+                    </div>
+                    <div class="todo-list"></div>
+                </div>
+                <div id="fees" class="page">
+                    <h2>Fee Details</h2>
+                    <div class="fee-info"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
